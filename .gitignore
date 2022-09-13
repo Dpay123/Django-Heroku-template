@@ -1,0 +1,7 @@
+*.sqlite3
+# below line should match name of virtual environment folder
+venv/
+*.log
+*.tmp
+*__pycache__*
+# add static folder if being handled by 3rd party service

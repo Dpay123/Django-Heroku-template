@@ -1,0 +1,90 @@
+>>> respresents a command to enter into terminal
+<text> represents a variable name or user input
+
+App Creation:
+-----------------------
+1. cd into project directory (this directory will contain manage.py)
+2. >>> python manage.py startapp <app_name>
+3. in the settings.py file, add <app_name> to INSTALLED_APPS
+4. create a urls.py file in the app directory to add app paths
+
+
+Set up Virtual Environment (requires package virtualenv):
+-----------------------
+1. cd into project directory
+2. >>> virtualenv <venv_name>
+3. always develop using the venv to keep requirements streamlined
+4. start the venv
+        >>> source <venv_name>/bin/activate
+5. deactivate the venv
+        >>> deactivate
+
+
+Template Creation:
+-------------------------
+1. create a directory in the app folder called templates
+2. create a directory in the template folder named same as the app
+3. create a template <template_name>.html
+
+
+Adding styles/images
+----------------------------
+1. create a folder called static in the app directory
+2. create a folder in the static folder named same as the app
+3. create a stylesheet <sheet_name>.css
+4. add the following to the .html template head
+        <link href="{% static '<app_name>/<sheet_name>' %}" rel="stylesheet">
+
+
+Heroku setup/commands
+-----------------------
+create app 
+1. cd into project directory
+2. >>> heroku create
+
+run app
+1. >>> heroku open
+2. this runs the command in Procfile
+3. can also use 
+        >>> heroku local
+
+check logs
+1. view info/logs about running app
+2. >>> heroku logs --tail 
+3. end logs: ctrl+c
+
+scale dynos
+1. default app is run on single web dyno
+2. >>> heroku ps:scale web=1
+
+check dynos
+1. >>> heroku ps
+
+shell
+1. >>> heroku run python manage.py shell
+
+
+Requirements.txt
+------------------------------
+1. presence detected by Heroku, it will know it is python app
+2. lists app dependencies that will be installed when Heroku requirements
+3. always be using venv - install basic dependencies for Heroku
+        >>> pip install -r requirements.txt
+4. to update requirements.txt with any newly installed dependencies
+        >>> pip freeze > requirements.txt
+
+
+Procfile
+-----------------------
+1. txt file in project dir - declares what command is executed to start app
+
+
+Runtime.txt
+------------------------
+specify which Python version to run
+
+
+Database choice
+--------------------------
+1. Django default is SQLite
+2. Heroku does not support - use PostgreSQL
